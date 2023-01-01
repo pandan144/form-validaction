@@ -2,25 +2,121 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport"  content="width=device-width,inital-scale=1.0">
+		<meta name="viewport"  content="width=device-width,initial-scale=1.0">
 		<title>form</title>
-		<link  rel="stylesheet" href="style/style.css">
+		 <link  rel="stylesheet" href="style/style.css">
 	</head>
 	<body>
-		<div>
+		<div class="div">
 			<div class="form">
-				<form>
-		
+				<!-- <div class="na">
+					<img src="./logo.png" class="img">
+				</div> -->
+				<form onsubmit="return false">
+					<div class="inp">
 					<label for="user-name">UserName</label>
 					<input type="text" id="user-name" value="" placeholder="Enter Name..">
-			
-					<label for="user-id">ID</label>
-					<input type="text" id="user-id" value="" placeholder="Enter Id..">
-			
-					<button id="sub">submit</button>
+					</div>
+					<div class="inp">
+					<label for="user-id">password</label>
+					<input type="password" id="user-id" value="" placeholder="Enter password..">
+					</div>
+					<button id="sub" onClick="myfun()">Login</button>
+					
 				
 				</form>
+				<P id="para"></p>
+				
+				<!-- sign up -->
+				<div class="displaynone">
+					<form onsubmit="return false">
+			
+						<label for="user-name">UserName</label>
+						<input type="text" id="user-names" value="" placeholder="Enter Name..">
+				
+						<label for="user-id">password</label>
+						<input type="password" id="user-ide" value="" placeholder="Enter password..">
+						
+						<label for="user-password">confrim password</label>
+						<input type="password" id="user-password" value="" placeholder="Enter confrim..">
+						
+						<button id="sub" onClick="newCreate()">Sign</button>
+					</form>
+				</div>
+				
+				
 			</div>
+			
+			<script>
+			
+					<!-- login -->
+					var text=document.getElementById("user-name");
+					var idv=document.getElementById("user-id");
+					var para=document.getElementById("para");
+					 var e =[{
+						name:"arul",
+						password:200202,
+					 }]
+					function myfun(){ 
+						var currentObject = e.find(e=>e.name===text.value)
+						if(currentObject !=undefined){	
+							 if( text.value===currentObject.name&&idv.value==currentObject.password ){
+								console.log(e)
+								alert("successfuly")
+								para.innerHTML=e.value;
+							 }
+							 else{
+								alert("not machinge the user validation");
+								para.innerHTML=" create your account"
+							 }
+					
+						}
+						
+						else{
+							alert("enter the value")
+						}
+					}
+				
+				
+				 <!-- sign up -->
+					var tex=document.getElementById("user-names");
+					var id=document.getElementById("user-ide");
+					var password=document.getElementById("user-password");
+					
+						
+					function newCreate(){
+					
+					
+					var deatial={
+						name:tex.value,
+						password:id.value,
+						confrimpas:password.value,
+					}
+						if(deatial.password !=undefined && deatial.confrimpas != undefined){
+							if(deatial.password === deatial.confrimpas){
+								e.push(deatial)
+								console.log(e)
+							}
+							else{
+								alert("not maching the  confrimpassword number ")
+							}
+						
+						}
+						else{
+						
+						alert("please enter password")
+						}
+
+				
+					}
+					
+					
+					
+					
+					
+				
+			
+			</script>
 		
 		</div>
 	</body>
