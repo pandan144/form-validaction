@@ -23,19 +23,21 @@
 					<input type="password" id="user-id" value="" placeholder="Enter password..">
 					</div>
 					<button id="sub"  class="button" onClick="myfun()">Login</button>
+					<button onClick="account()" class="button" class="displaynone" id="sibu">sign in</button>
+					 <p id="para" class="displaynone">"create your signup page"</p>
+						
 					
-					<div id="para" class="displaynone"> <p>create your signup page</p>
-						<button onClick="account()" class="button">sign in</button>
-					</div>
 				
 				</form>
 				
 				
 			</div>
+			
 		</div>
+		
 	
 				<!-- sign up -->
-			<div id="signups" class="displayblock" class="div">
+			<div id="signups" class="displaynone" class="div">
 			
 				<div class="form">
 					
@@ -60,7 +62,7 @@
 			
 			<div id="userinfor" class="displaynone ">
 			
-				<h1>Hi </h1>
+				<h1>Hi  </h1>
 				
 				<div class="flex">
 					<div class="user-img">
@@ -74,39 +76,55 @@
 		</div>
 			
 			<script>
+					
+					
+					
 			
 					<!-- login -->
 					const text=document.getElementById("user-name");
 					const idv=document.getElementById("user-id");
+					
 					 const e =[{
 						name:"arul",
 						password:200202,
 					 }]
 					 
 					function myfun(){ 
-						const currentObject = e.find(e=>e.name === text.value)
+						const currentObject = e.find(e=>e.name === text.value,e.password===idv.value)
 						if(currentObject != undefined ){	
-							 if( text.value === currentObject.name && idv.value == currentObject.password ){
-								
-								console.log(e);
-								alert("successfuly");
-								userinfor();
-							 }
-							 
-							 
-						}
-						
-						else{
+							if( text.value === currentObject.name && idv.value == currentObject.password ){
+
+							console.log(e);
+							alert("successfuly");
+							userinfor();
+							}
+							else{
 							<!-- alert("enter the value"); -->
 							alert("not machinge the user validation");
-								 inblock();
+								// inblock();
+							}							 
+							 
 						}
+						else{
+							alert("enter the value");
+							inblock();
+						}
+						
+						
 					}
 				
 				
 					function inblock(){
-						const par=document.getElementById("para");
-						par.className='displayblock';
+						const logi=document.getElementById("login");
+						logi.className="displaynone"
+						
+						const sign=document.getElementById("signups");
+						sign.className='displayblock';
+						
+						const sibun=document.getElementById("sibu")
+						sibun.className="displaynone";
+						
+						
 						
 					}
 					
@@ -118,21 +136,24 @@
 						const user=document.getElementById("userinfor");
 						user.className='displayblock';
 						
-					const sign=document.getElementById("signups");
-					 sign.className='displaynone';
+						const sign=document.getElementById("signups");
+						sign.className='displaynone';
+					 
+					// const par=document.getElementById("para");
+					//	par.className='displaynone';
 						
 					}
 				 <!-- accoun create page -->
 					function account(){
 					
-						const par=document.getElementById("para");
-						par.className='displaynone';
-						
 						const login=document.getElementById("login");
-						login.className="displaynone";
+						login.className="displayblock";
 						
 						const sign=document.getElementById("signups");
-						sign.className='displayblock';
+						sign.className='displaynone';
+						
+						const sibun=document.getElementById("sibu")
+						sibun.className="displaynone";
 						
 					
 					}
@@ -151,11 +172,11 @@
 						password:id.value,
 						confrimpas:password.value,
 					}
-						if(deatial !=undefined && deatial != undefined){
+						if(deatial !== ""){
 							if(deatial.password === deatial.confrimpas){
 								e.push(deatial);
 								console.log(e);
-								userinfor();
+								account();
 							}
 							else{
 								alert("not maching the  confrimpassword number ")
@@ -164,7 +185,7 @@
 						}
 						else{
 							
-							alert("please enter password")
+							alert("please enter the value")
 						}
 
 				
